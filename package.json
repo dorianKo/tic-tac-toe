@@ -2,6 +2,10 @@
   "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "yarn": "1.17.3",
+    "node": "12.6.0"
+  },
   "dependencies": {
     "node-sass": "^4.12.0",
     "purecss": "^1.0.1",
