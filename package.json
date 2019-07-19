@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "yarn": "1.17.3",
-    "node": "12.6.0"
+    "node": "10.16.0"
   },
   "dependencies": {
     "node-sass": "^4.12.0",
