@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Board from '../board';
 import Status from './Status';
-import x from './icons/x.svg';
+import xIcon from './icons/xIcon.svg';
 import circle from './icons/circle.svg';
 import square from './icons/square.svg';
 import sean from './icons/sean.png';
 
-const PLAYER1_DEFAULT_ICON = <img src={x} className="pure-img" alt="X" />;
+const PLAYER1_DEFAULT_ICON = <img src={xIcon} className="pure-img" alt="X" />;
 const PLAYER2_DEFAULT_ICON = <img src={circle} className="pure-img" alt="O" />;
 const PLAYER1_TOURNAMENT_ICON = <img src={square} className="pure-img" alt="X" />;
 const PLAYER2_TOURNAMENT_ICON = <img src={sean} className="pure-img" alt="O" />;
@@ -25,7 +25,7 @@ export const getWinner = squares => {
   let winningBoxes = [];
   winningSquares.forEach(([a,b,c]) => {
     if (squares[a] && (squares[a] === squares[b]) && (squares[a] === squares[c])) {
-      return winningBoxes = [a, b, c];
+      winningBoxes = [a, b, c];
     }
   });
   return winningBoxes;
