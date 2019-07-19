@@ -72,7 +72,7 @@ class Game extends Component {
   handleUndo = move => {
     const { playerOneIsNext, winner, undid, history } = this.state;
     if  (winner || history.length === 10) {
-      return this.setState({
+      this.setState({
         moveNumber: 0,
         playerOneIsNext: true,
         undid: false,
@@ -84,9 +84,10 @@ class Game extends Component {
           }
         ],
       });
+      return;
     }
     if (move && !undid) {
-      return this.setState({
+      this.setState({
         moveNumber: move - 1,
         playerOneIsNext: !playerOneIsNext,
         undid: !undid,
