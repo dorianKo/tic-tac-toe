@@ -26,9 +26,9 @@ const Board = ({ squares, onClick, winningBoxes }) => {
 };
 
 Board.propTypes = {
-  squares: PropTypes.array.isRequired,
+  squares: PropTypes.arrayOf(PropTypes.object).isRequired,
   onClick: PropTypes.func.isRequired,
-  winningBoxes: PropTypes.array.isRequired,
+  winningBoxes: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Board;
