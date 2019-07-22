@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import isEmpty from 'lodash/fp/isEmpty';
-import flatten from 'lodash/fp/flatten';
 import Board from '../board';
 import Status from './Status';
 import xIcon from './icons/xIcon.svg';
@@ -24,17 +22,19 @@ const winningSquares = [
 ];
 
 /**
- * gets all winning indexes and reduces them into single array without duplicates
+ * Gets all winning indexes and reduces them into single array without duplicates.
  * @param {Array} winningSquares
- * @return {Array} array of winning indexes
+ * @return {Array} array of winning indexes.
  */
 export const getWinningIndexes = squares => {
-  return [...new Set(flatten(winningSquares.filter(([a,b,c]) => {
+  const winningRows = winningSquares.filter(([a,b,c]) => {
     return (squares[a] && (squares[a] === squares[b]) && (squares[a] === squares[c]));
-  })))];
+  });
+  const flattenedWinners = winningRows.reduce((acc, winners) => [...acc, ...winners], []);
+  return [...new Set(flattenedWinners)];
 };
 
-// use this if we only want to show the first three winning indexes
+// Use this if we only want to show the first three winning indexes
 // const getWinningIndexesFind = squares => {
 //   const winningIndexes = winningSquares.find(([a,b,c]) => {
 //     return (squares[a] && (squares[a] === squares[b]) && (squares[a] === squares[c]));
@@ -76,7 +76,7 @@ class Game extends Component {
       history: previousMoves.concat([{ squares: resolvedSquares }]),
       undid: false,
     });
-    if (!isEmpty(getWinningIndexes(resolvedSquares))) {
+    if (getWinningIndexes(resolvedSquares) !== []) {
       this.setState({
         winningBoxes: getWinningIndexes(resolvedSquares),
         winner: resolvedSquares[getWinningIndexes(resolvedSquares)[0]],
