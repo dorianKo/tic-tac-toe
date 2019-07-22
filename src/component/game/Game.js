@@ -35,11 +35,11 @@ export const getWinningIndexes = squares => {
 };
 
 // Use this if we only want to show the first three winning indexes
-// const getWinningIndexesFind = squares => {
+// const getWinningIndexes = squares => {
 //   const winningIndexes = winningSquares.find(([a,b,c]) => {
 //     return (squares[a] && (squares[a] === squares[b]) && (squares[a] === squares[c]));
 //   });
-//   return winningIndexes ? winningIndexes : [];
+//   return winningIndexes === undefined ? [] : winningIndexes;
 // };
 
 class Game extends Component {
